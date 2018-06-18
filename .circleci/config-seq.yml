@@ -1,0 +1,498 @@
+version: 2.0
+jobs:
+
+  # we defined following jobs:
+  #    prebuild
+  #    build-simulate-debug
+  #    build1-simulate-relwithdebug
+  #    build1-simulate-release
+  #    build-lby1-debug
+  #    build1-lby1-relwithdebug
+  #    build1-lby1-release
+  #    build-lby1-fls-debug
+  #    build1-lby1-fls-relwithdebug
+  #    build1-lby1-fls-release
+  #    test-simulate
+  #    test-lby1-lby1fls
+  #    install
+ 
+  # We defined following cache keys (please be careful when you try to rename chache name):
+  #    'gdesign-sourceCode-cache-simulate': Generates and stores a cache of file and directory of open enclave source code.
+  #    'gdesign-sourceCode-cache-lby1': Generates and stores a cache of file and directory of open enclave source code.
+  #    'gdesign-sourceCode-cache-lby1fls': Generates and stores a cache of file and directory of open enclave source code.
+  
+  #=======prebuild========# 
+  #  Clone code from git hub, Running format-code, license, spelling check
+  prebuild:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      # Bundle install dependencies
+      - run:
+          name: Prebuild
+          command: |
+             echo "prebuild..." &&
+             pwd &&
+             ls -al &&
+             echo "Prebuild Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache
+           paths:
+             - ./../ColorfullTime-Bingyu        
+
+  #========Build==========# 
+  # Simulate-mode-Debug
+  build-simulate-debug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - restore_cache:
+          keys:
+            - gdesign-sourceCode-cache
+      # Bundle install dependencies
+      - run: 
+          name: BuildSimuateDebug
+          command: |
+            echo "Building..." &&
+            echo "Buildig Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache-build-simulate-debug
+           paths:
+             - ./../ColorfullTime-Bingyu  
+             
+  # Simulate-mode | RelWithDebug
+  build-simulate-relwithdebug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - restore_cache:
+          keys:
+            - gdesign-sourceCode-cache
+      # Bundle install dependencies
+      - run: 
+          name: BuildSimuateRelwithDebug
+          command: |
+            echo "Building..." &&
+            echo "Buildig Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache-build-simulate-relwithdebug
+           paths:
+             - ./../ColorfullTime-Bingyu  
+  
+  # Simulate-mode | Release
+  build-simulate-release:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - restore_cache:
+          keys:
+            - gdesign-sourceCode-cache
+      # Bundle install dependencies
+      - run: 
+          name: BuildSimuateRelease
+          command: |
+            echo "Building..." &&
+            echo "Buildig Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache-build-simulate-release
+           paths:
+             - ./../ColorfullTime-Bingyu 
+
+    # Simulate-modeDebug
+ 
+  # LBY1 | Debug 
+  build-lby1-debug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - restore_cache:
+          keys:
+            - gdesign-sourceCode-cache
+      # Bundle install dependencies
+      - run: 
+          name: BuildLby1Debug
+          command: |
+            echo "Building..." &&
+            echo "Buildig Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache-build-lby1-debug
+           paths:
+             - ./../ColorfullTime-Bingyu 
+  
+  # LBY1 | RelWithDebug
+  build-lby1-relwithdebug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - restore_cache:
+          keys:
+            - gdesign-sourceCode-cache
+      # Bundle install dependencies
+      - run: 
+          name: BuildLby1RelwithDebug
+          command: |
+            echo "Building..." &&
+            echo "Buildig Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache-build-lby1-relwithdebug
+           paths:
+             - ./../ColorfullTime-Bingyu 
+
+  # LBY1 | Release
+  build-lby1-release:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - restore_cache:
+          keys:
+            - gdesign-sourceCode-cache
+      # Bundle install dependencies
+      - run: 
+          name: BuildLby1Release
+          command: |
+            echo "Building..." &&
+            echo "Buildig Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache-build-lby1-release
+           paths:
+             - ./../ColorfullTime-Bingyu
+  
+  # LBY1-FLS | Debug 
+  build-lby1-fls-debug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - restore_cache:
+          keys:
+            - gdesign-sourceCode-cache
+      # Bundle install dependencies
+      - run: 
+          name: BuildLby1FlsDebug
+          command: |
+            echo "Building..." &&
+            echo "Buildig Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache-build-lby1-fls-Debug
+           paths:
+             - ./../ColorfullTime-Bingyu
+
+  # LBY1-FLS | RelWithDebug
+  build-lby1-fls-relwithdebug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - restore_cache:
+          keys:
+            - gdesign-sourceCode-cache
+      # Bundle install dependencies
+      - run: 
+          name: BuildLby1FlsRelWithDebug
+          command: |
+            echo "Building..." &&
+            echo "Buildig Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache-build-lby1-fls-relwithdebug
+           paths:
+             - ./../ColorfullTime-Bingyu
+
+  # LBY1-FLS | Release
+  build-lby1-fls-release:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - restore_cache:
+          keys:
+            - gdesign-sourceCode-cache
+      # Bundle install dependencies
+      - run: 
+          name: BuildLby1FlsRelease
+          command: |
+            echo "Building..." &&
+            echo "Buildig Done!" 
+      - save_cache:
+           key: gdesign-sourceCode-cache-build-lby1-fls-release
+           paths:
+             - ./../ColorfullTime-Bingyu
+     
+  #=========Test========#
+  # Simulate | Debug
+  test-simulate-debug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Testing..."
+  
+  # Simulate | RelWithDebug
+  test-simulate-relwithdebug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Testing..."
+  
+  # Simulate| Release
+  test-simulate-release:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Testing..."
+      
+  # LBY1 | Debug
+  test-lby1-debug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Testing..."
+   # LBY1 | RelWithRelease
+  # LBY1 | RelWithDebug
+  test-lby1-relwithdebug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Testing..."    
+  # LBY1 | Release
+  test-lby1-release:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Testing..."
+  
+  # LBY1-FLS | Debug
+  test-lby1-fls-debug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Testing..."
+   # LBY1 | RelWithRelease
+  # LBY1-FLS | RelWithDebug
+  test-lby1-fls-relwithdebug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Testing..."    
+  # LBY1-FLS | Release
+  test-lby1-fls-release:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Testing..."   
+  #=======Install=======#
+  # Simulate | Debug
+  install-simulate-debug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Installing..."
+  
+  # Simulate | RelWithDebug
+  install-simulate-relwithdebug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Installing..."
+  
+  # Simulate| Release
+  install-simulate-release:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Installing..."
+      
+  # LBY1 | Debug
+  install-lby1-debug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Installing..."
+ 
+  # LBY1 | RelWithDebug
+  install-lby1-relwithdebug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Installing..."    
+  # LBY1 | Release
+  install-lby1-release:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Installing..."
+  
+  # LBY1-FLS | Debug
+  install-lby1-fls-debug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Installing..."
+   # LBY1 | RelWithRelease
+  # LBY1-FLS | RelWithDebug
+  install-lby1-fls-relwithdebug:
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Installing..."    
+  # LBY1-FLS | Release
+  install-lby1-fls-release: 
+    docker:
+      - image: bingyuliu/sample_gdesign:0.2.1
+    working_directory: ~/ColorfullTime-Bingyu
+    steps:
+      - checkout
+      - run: echo "Installing..."   
+workflows:
+  version: 2
+  build-test-install:
+  # We designed following job pipeline in workflows:(template like tihs: prebuild-->build-->test-->install)
+  #    1. prebuild-->build-simulate-debug---------->test-simulate-debug--------->install-simulate-debug
+  #    2. prebuild-->build1-simulate-relwithdebug-->test-simulate-relwithdebug-->install-simulate-relwithdebug
+  #    3. prebuild-->build1-simulate-release------->test-simulate-release------->install-simulate-debug
+  #    4. prebuild-->build-lby1-debug-------------->test-lby1-debug------------->install-lby1-debug
+  #    5. prebuild-->build-lby1-relwithdeb--------->test-lby1-relwithdebug------>install-lby1-relwithdebug
+  #    6. prebuild-->build-lby1-release------------>test-lby1-release----------->install->lby1-release
+  #    7. prebuild-->build-lby1-fls-debug---------->test-lby1fls-debug---------->install-lby1fls-debug
+  #    8. prebuild-->build-lby1-fls-relwithdebug--->test-lby1fls-relwithdebug--->install-lby1fls-relwithdebug
+  #    9. prebuild-->build-lby1-fls-release-------->test-lby1fls-release-------->install-lby1fls-release
+    jobs:
+      - prebuild
+      # 1. prebuild-->build-simulate-debug---------->test-simulate-debug--------->install-simulate-debug
+      - build-simulate-debug:
+          requires:
+            - prebuild
+      - test-simulate-debug:
+          requires:
+            - build-simulate-debug
+      - install-simulate-debug:
+          requires:
+            - test-simulate-debug
+      
+      # 2. prebuild-->build1-simulate-relwithdebug-->test-simulate-relwithdebug-->install-simulate-relwithdeb     
+      - build-simulate-relwithdebug:
+          requires:
+            - prebuild
+      - test-simulate-relwithdebug:
+          requires:
+            - build-simulate-relwithdebug
+      - install-simulate-relwithdebug:
+          requires:
+            - test-simulate-relwithdebug
+            
+      # 3. prebuild-->build1-simulate-release------->test-simulate-release------->install-simulate-release     
+      - build-simulate-release:
+          requires:
+            - prebuild
+      - test-simulate-release:
+          requires:
+            - build-simulate-release
+      - install-simulate-release:
+          requires:
+            - test-simulate-release
+            
+      #  4. prebuild-->build-lby1-debug-------------->test-lby1-debug------------->install-lby1-debug
+      - build-lby1-debug:
+          requires:
+            - prebuild
+      - test-lby1-debug:
+          requires:
+            - build-lby1-debug
+      - install-lby1-debug:
+          requires:
+            - test-lby1-debug
+            
+      # 5.  prebuild-->build-lby1-relwithdeb--------->test-lby1-relwithdebug------>install-lby1-relwithdebug     
+      - build-lby1-relwithdebug:
+          requires:
+            - prebuild
+      - test-lby1-relwithdebug:
+          requires:
+            - build-lby1-relwithdebug
+      - install-lby1-relwithdebug:
+          requires:
+            - test-lby1-relwithdebug
+            
+      # 6.  prebuild-->build-lby1-release------------>test-lby1-release----------->install->lby1-release     
+      - build-lby1-release:
+          requires:
+            - prebuild
+      - test-lby1-release:
+          requires:
+            - build-lby1-release
+      - install-lby1-release:
+          requires:
+            - test-lby1-release
+            
+      # 7.  prebuild-->build-lby1-fls-debug---------->test-lby1fls-debug---------->install-lby1-fls-debug
+      - build-lby1-fls-debug:
+          requires:
+            - prebuild
+      - test-lby1-fls-debug:
+          requires:
+            - build-lby1-fls-debug
+      - install-lby1-fls-debug:
+          requires:
+            - test-lby1-fls-debug
+            
+      # 8.  prebuild-->build-lby1-fls-relwithdebug--->test-lby1fls-relwithdebug--->install-lby1-fls-relwithdebug     
+      - build-lby1-fls-relwithdebug:
+          requires:
+            - prebuild
+      - test-lby1-fls-relwithdebug:
+          requires:
+            - build-lby1-fls-relwithdebug
+      - install-lby1-fls-relwithdebug:
+          requires:
+            - test-lby1-fls-relwithdebug
+            
+      # 9.  prebuild-->build-lby1-fls-release-------->test-lby1fls-release-------->install-lby1-fls-release     
+      - build-lby1-fls-release:
+          requires:
+            - prebuild
+      - test-lby1-fls-release:
+          requires:
+            - build-lby1-fls-release
+      - install-lby1-fls-release:
+          requires:
+            - test-lby1-fls-release            
