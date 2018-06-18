@@ -1,5 +1,5 @@
 # Sample  [![Build Status](https://travis-ci.org/ColorfulTime/GeekDesign.svg?branch=master)](https://travis-ci.org/ColorfulTime/GeekDesign#)
-For Learning
+For Learning CICD
 
 ### Additional Resources
 -GBase
