@@ -7,7 +7,7 @@ int main()
     int number;
     
     cout << "Hello, welcome to GDesign!" << endl;
-    cout << "1   Aninal" << endl;
+    cout << "1   Animal" << endl;
     cout << "2   Human" << endl;
     cout << "3   Nature" << endl;
     cout << "4   Abstract" << endl;
