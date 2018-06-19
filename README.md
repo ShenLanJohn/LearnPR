@@ -1,4 +1,4 @@
-# Sample  [![Build Status](https://travis-ci.org/ColorfulTime/GeekDesign.svg?branch=master)](https://travis-ci.org/ColorfulTime/GeekDesign#)
+# LovelyDesign  [![Build Status](https://travis-ci.com/ColorfulTime/GeekDesign.svg?branch=master)](https://travis-ci.com/ColorfulTime/GeekDesign#)
 For Learning CICD
 
 ### Additional Resources
