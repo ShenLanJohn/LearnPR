@@ -18,3 +18,6 @@ Linux    | Ubutnu18| x64          | 0.1.0 | GD
 
 4 key concepts of docker:
 Dockerfile, image, container, registry.
+
+
+You can use [skip ci] or [ci skip] to skip the .CircleCI build.
