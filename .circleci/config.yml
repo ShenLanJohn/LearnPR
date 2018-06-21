@@ -16,8 +16,6 @@ jobs:
              echo "prebuild..." &&
              pwd &&
              ls -al &&
-             echo "=============="
-             ls -al &&
              echo "Prebuild Done!" 
       - save_cache:
            key: gdesign-sourceCode-cache
@@ -38,8 +36,8 @@ jobs:
           name: BuildSimuateDebug
           command: |
             pwd &&
-            ls ./.circleci -al &&
-            ./.circleci/external "BuildSimuateDebug"
+            ls ./.circleci -al && 
+            ./.circleci/externalscipt/buildtestinstall "BuildSimuateDebug"
       - run: 
           name: TestSimuateDebug
           command: |          
@@ -49,15 +47,13 @@ jobs:
           name: InstallSimuateDebug
           command: |
             pwd &&
-            ./.circleci/external "InstallSimuateDebug" &&
+            ./.circleci/externalscipt/buildtestinstall "InstallSimuateDebug" &&
             echo " Installation Done!"
       - save_cache:
            key: gdesign-sourceCode-cache-build-simulate-debug
            paths:
              - ./../ColorfullTime-Bingyu  
              
-
-
 workflows:
   version: 2
   build-test-install:
