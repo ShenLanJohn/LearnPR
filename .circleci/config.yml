@@ -35,6 +35,8 @@ jobs:
       - run: 
           name: BuildSimuateDebug
           command: |
+            pwd &&
+            ls ./.circleci -al &&
             ./.circleci/externalscript "BuildSimuateDebug"
       - run: 
           name: TestSimuateDebug
@@ -44,6 +46,7 @@ jobs:
       - run: 
           name: InstallSimuateDebug
           command: |
+            pwd &&
             ./.circleci/externalscript "InstallSimuateDebug" &&
             echo " Installation Done!"
       - save_cache:
