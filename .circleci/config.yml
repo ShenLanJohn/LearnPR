@@ -37,7 +37,7 @@ jobs:
           command: |
             pwd &&
             ls ./.circleci -al &&
-            ./.circleci/externalscript "BuildSimuateDebug"
+            ./.circleci/external "BuildSimuateDebug"
       - run: 
           name: TestSimuateDebug
           command: |          
@@ -47,7 +47,7 @@ jobs:
           name: InstallSimuateDebug
           command: |
             pwd &&
-            ./.circleci/externalscript "InstallSimuateDebug" &&
+            ./.circleci/external "InstallSimuateDebug" &&
             echo " Installation Done!"
       - save_cache:
            key: gdesign-sourceCode-cache-build-simulate-debug
