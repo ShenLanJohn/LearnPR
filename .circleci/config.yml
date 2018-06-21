@@ -53,35 +53,6 @@ jobs:
              
 
 
-    docker:
-      - image: bingyuliu/sample_gdesign:0.2.1
-    working_directory: ~/ColorfullTime-Bingyu
-    steps:
-      - restore_cache:
-          keys:
-            - gdesign-sourceCode-cache
-      # Build, Test and Install
-      - run: 
-          name: BuildRelease
-          command: |
-            echo "Building..." &&
-            echo "Buildig Done!" 
-      - run: 
-          name: TestRelease
-          command: |          
-            echo "Testing..." &&
-            echo "Testing Done!"
-      - run: 
-          name: InstallRelease
-          command: |
-            echo "Installing..." &&
-            echo "Installation Done!"
-      - save_cache:
-           key: gdesign-sourceCode-cache-build-lby1-fls-release
-           paths:
-             - ./../ColorfullTime-Bingyu
-     
-
 workflows:
   version: 2
   build-test-install:
