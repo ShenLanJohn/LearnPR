@@ -16,6 +16,8 @@ jobs:
              echo "prebuild..." &&
              pwd &&
              ls -al &&
+             echo "=============="
+             ls -al &&
              echo "Prebuild Done!" 
       - save_cache:
            key: gdesign-sourceCode-cache
