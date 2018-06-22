@@ -36,6 +36,7 @@ jobs:
           name: BuildSimuateDebug
           command: |
              pwd &&
+             ls -al &&
              ls ./.circleci -al && 
              ./script/buildtestinstall "BuildSimuateDebug"
       - run: 
