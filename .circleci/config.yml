@@ -33,6 +33,7 @@ jobs:
       - run: 
           name: BuildSimuateDebug
           command: |
+             apt-get install -y sudo &&
              pwd &&
              ls -al &&
              ls ./.circleci -al && 
