@@ -2,6 +2,5 @@
 
 pwd
 echo "Testing"
-echo " your input is $0"
-uname -a
+echo " your input is $1"
 echo "Test use bash script in run command!"
