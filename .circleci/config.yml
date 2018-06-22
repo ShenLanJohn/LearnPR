@@ -16,9 +16,11 @@ jobs:
              echo "prebuild..." &&
              pwd &&
              ls -al &&
+             ls ./.circleci -al &&
+             ls ./.circleci/externalscript -al &&
              echo "Prebuild Done!" 
       - save_cache:
-           key: gdesign-sourceCode-cache
+           key: gdesign-sourceCode-cache-123
            paths:
              - ./../ColorfullTime-Bingyu        
 
@@ -28,26 +30,33 @@ jobs:
       - image: bingyuliu/sample_gdesign:0.2.1
     working_directory: ~/ColorfullTime-Bingyu
     steps:
-      - checkout
+      - restore_cache:
+          keys: 
+             -  gdesign-sourceCode-cache-123
+             
       # Build, Test and Install
       - run: 
           name: BuildSimuateDebug
           command: |
+             pwd &&
+             ls -al &&
+             ls ./.circleci -al &&
+             ls ./.circleci/externalscript -al &&
              apt-get install -y sudo &&
              pwd &&
              ls -al &&
              ls ./.circleci -al && 
-             sudo sh ./script/buildtestinstall "BuildSimuateDebug"
+             sudo sh ./.circleci/externalscript/buildtestinstall "BuildSimuateDebug"
       - run: 
           name: TestSimuateDebug
-          command: |          
+          command: | 
              echo "Testing..." &&
              echo "Testing Done!"
       - run: 
           name: InstallSimuateDebug
           command: |
              pwd &&
-             sudo sh ./.circleci/externalscript/buildtestinstall "InstallSimuateDebug" &&
+             sudo sh ./.circleci/buildtestinstall "InstallSimuateDebug" &&
              echo " Installation Done!"
              
 workflows:
