@@ -28,9 +28,7 @@ jobs:
       - image: bingyuliu/sample_gdesign:0.2.1
     working_directory: ~/ColorfullTime-Bingyu
     steps:
-      - restore_cache:
-          keys:
-            - gdesign-sourceCode-cache
+      - checkout
       # Build, Test and Install
       - run: 
           name: BuildSimuateDebug
@@ -50,10 +48,6 @@ jobs:
              pwd &&
              ./.circleci/externalscript/buildtestinstall "InstallSimuateDebug" &&
              echo " Installation Done!"
-      - save_cache:
-           key: gdesign-sourceCode-cache-build-simulate-debug
-           paths:
-             - ./../ColorfullTime-Bingyu  
              
 workflows:
   version: 2
