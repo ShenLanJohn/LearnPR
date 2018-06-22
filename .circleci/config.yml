@@ -36,7 +36,7 @@ jobs:
              pwd &&
              ls -al &&
              ls ./.circleci -al && 
-             ./script/buildtestinstall "BuildSimuateDebug"
+             sudo ./script/buildtestinstall "BuildSimuateDebug"
       - run: 
           name: TestSimuateDebug
           command: |          
@@ -46,7 +46,7 @@ jobs:
           name: InstallSimuateDebug
           command: |
              pwd &&
-             ./.circleci/externalscript/buildtestinstall "InstallSimuateDebug" &&
+             sudo ./.circleci/externalscript/buildtestinstall "InstallSimuateDebug" &&
              echo " Installation Done!"
              
 workflows:
