@@ -1,1 +1,2 @@
 When you change $PATH in dockerfile, the PATH in /etc/environment will not changed. Like in Dockerfile-sample-withEnv, I installed latest cmake, and updated PATH. But in "sudo xxxbashfile", the PATH get from /etc/environment still, your shell file xxxbashfile will use old cmake still, you have to remove sudo, like this "xxxbashfile"
+Thanks
